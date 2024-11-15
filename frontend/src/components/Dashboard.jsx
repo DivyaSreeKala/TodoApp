@@ -109,7 +109,7 @@ function Dashboard() {
                         Add New Todo Task
                     </Typography>
                     
-                    <TextField id="filled-basic" label="Filled" variant="filled" name="description" onChange={(e)=>onTodoInputChange(e)} fullWidth /><br />
+                    <TextField id="filled-basic" label="Todo Description" variant="filled" name="description" onChange={(e)=>onTodoInputChange(e)} fullWidth /><br />
 
                     <button type="button" style={{marginTop:"0.2rem",padding:"0.6rem",backgroundColor:"green"}} onClick={handleAddTodo}>Add</button>
 
@@ -139,7 +139,7 @@ function Dashboard() {
                              <h4>{todo.description} </h4>
                         }
 
-                            <button type="button" onClick={()=>onDelete(todo._id)}>Delete</button>
+                            <button type="button" onClick={()=>onDelete(todo._id)} style={{backgroundColor:"red",color:"white"}}>Delete</button>
                         </div>
                     
                     )}
