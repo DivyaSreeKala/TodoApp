@@ -13,7 +13,6 @@ app.use(cors());
 
 require('./db/connection')
 
-// require('./models/todoData')
 
 const todoRoutes = require('./routes/todoRoutes');
 app.use('/todo',todoRoutes);
@@ -21,6 +20,11 @@ app.use('/todo',todoRoutes);
 
 const PORT = process.env.PORT;
 
+app.use(express.static(path.join(__dirname, "dist")));
+
+app.get("/*", function (req, res) {
+    res.sendFile(path.join(__dirname, "dir", "index.html"))
+})
 app.listen(PORT,() => {
     console.log(`Server running on port ${PORT}`);
 })
