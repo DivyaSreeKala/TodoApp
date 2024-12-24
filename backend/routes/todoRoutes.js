@@ -11,7 +11,7 @@ router.post('/add',async(req,res) => {
         const requestData = req.body;
         const data = new todoModel(requestData);
         const savedData = await data.save();
-        res.status(200).send("post successfull");
+        res.status(200).send({message:"post successfull", data:savedData});
     }catch(err){
         res.status(404).send(err)
     }
@@ -33,9 +33,8 @@ router.put('/edit/:id',async(req,res) => {
         const id = req.params.id;
         const requestData = req.body;
         const data = await todoModel.findByIdAndUpdate(id, req.body);
-        res.status(200).send("Updated Successfully");
+        res.status(200).send({message:"updation successfull", data});
     }catch(err) {
-        console.log(err)
         res.status(404).send(err);
     }
 })
@@ -44,12 +43,9 @@ router.put('/edit/:id',async(req,res) => {
 router.delete('/delete/:id',async(req,res) => {
     try{
         const id = req.params.id;
-        console.log(id)
         const data = await todoModel.deleteOne({_id:id});
-        console.log(data)
-        res.status(200).send("deleted successfully");
+        res.status(200).send({message:"delete successfull", data});
     }catch(err){
-        console.log(err)
         res.status(404).send(err)
     }
 })
